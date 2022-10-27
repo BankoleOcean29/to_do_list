@@ -16,13 +16,11 @@ class _ToDoScreenState extends State<ToDoScreen> {
   bool _checkBoxIsVisible = false;
   bool _microphoneIsVisible = true;
 
-  List<String> litems = ["1", "2", "Third", "4", 'lola', 'ocean', 'dom'];
+  List<String> tasks = [];
 
-  List<Widget> _cardList = [];
-
-  void _addCardWidget() {
+  void _addTodoItem(String title) {
     setState(() {
-      _cardList.add(TodoWidget(todoValue: isBoxChecked));
+      tasks.add(title);
     });
   }
 
@@ -51,11 +49,23 @@ class _ToDoScreenState extends State<ToDoScreen> {
                 child: ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: litems.length,
+                    itemCount: tasks.length,
                     itemBuilder: (BuildContext ctxt, int index) {
-                      return Text(
-                        litems[index],
-                        style: TextStyle(color: Colors.white),
+                      return Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Container(
+                          height: 40,
+                          decoration: const BoxDecoration(
+                            color: Colors.indigo,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                          child:Center(
+                            child: Text(
+                                tasks[index],
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                          ),
+                          ),
                       );
                     }),
               ),
@@ -122,7 +132,12 @@ class _ToDoScreenState extends State<ToDoScreen> {
                   padding: const EdgeInsets.only(right: 8.0),
                   child: IconButton(
                     icon: const Icon(Icons.check),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        _addTodoItem(_textFieldValue.text);
+                      });
+                      _textFieldValue.clear();
+                    },
                   ),
                 ),
                 visible: _checkBoxIsVisible,

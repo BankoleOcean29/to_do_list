@@ -17,28 +17,6 @@ class ToDo extends StatelessWidget {
   }
 }
 
-class yolo extends StatefulWidget {
-  const yolo({Key? key}) : super(key: key);
-
-  @override
-  State<yolo> createState() => _yoloState();
-}
-
-class _yoloState extends State<yolo> {
-
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
 
 
 
