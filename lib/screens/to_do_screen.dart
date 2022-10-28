@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list/screens/task_screen.dart';
 
 class ToDoScreen extends StatefulWidget {
   const ToDoScreen({Key? key}) : super(key: key);
@@ -89,7 +90,12 @@ class _ToDoScreenState extends State<ToDoScreen> {
                   bottom: MediaQuery.of(context).viewInsets.bottom + 10),
               child: keyboardIsOpened ? null : FloatingActionButton(
                   backgroundColor: const Color(0xff80CBC4),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Task()),
+                    );
+                  },
                   child: const Icon(
                     Icons.add,
                     color: Colors.black,
