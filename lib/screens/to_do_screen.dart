@@ -51,21 +51,30 @@ class _ToDoScreenState extends State<ToDoScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: tasks.length,
                     itemBuilder: (BuildContext ctxt, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Container(
-                          height: 40,
-                          decoration: const BoxDecoration(
-                            color: Color(0xff795548),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                          child:Center(
-                            child: Text(
-                                tasks[index],
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                          ),
-                          ),
+                      String task = tasks[index];
+                      return Dismissible(
+                        key: Key(task),
+                        onDismissed: (direction) {
+                          setState(() {
+                            tasks.removeAt(index);
+                          });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Container(
+                            height: 40,
+                            decoration: const BoxDecoration(
+                              color: Color(0xff795548),
+                              borderRadius: BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child:Center(
+                              child: Text(
+                                  tasks[index],
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                            ),
+                            ),
+                        ),
                       );
                     }),
               ),
