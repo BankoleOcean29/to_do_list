@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list/screens/task_widget.dart';
 
 class ToDoScreen extends StatefulWidget {
   const ToDoScreen({Key? key}) : super(key: key);
@@ -26,15 +25,16 @@ class _ToDoScreenState extends State<ToDoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    bool keyboardIsOpened = MediaQuery.of(context).viewInsets.bottom != 0.0;
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.black38,
+      backgroundColor: const Color(0xff77114152),
       appBar: AppBar(
         title: const Text(
           'TO Do',
           style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: Colors.amber,
+        backgroundColor: const Color(0xff80CBC4),//80CBC4
         leading: const Icon(
           Icons.check,
           color: Colors.black,
@@ -56,7 +56,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                         child: Container(
                           height: 40,
                           decoration: const BoxDecoration(
-                            color: Colors.indigo,
+                            color: Color(0xff795548),
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                           child:Center(
@@ -77,8 +77,8 @@ class _ToDoScreenState extends State<ToDoScreen> {
                   top: 570.0,
                   left: 320,
                   bottom: MediaQuery.of(context).viewInsets.bottom + 10),
-              child: FloatingActionButton(
-                  backgroundColor: Colors.amber,
+              child: keyboardIsOpened ? null : FloatingActionButton(
+                  backgroundColor: const Color(0xff80CBC4),
                   onPressed: () {},
                   child: const Icon(
                     Icons.add,
@@ -89,14 +89,14 @@ class _ToDoScreenState extends State<ToDoScreen> {
         ]),
       ),
       bottomSheet: BottomSheet(
-        backgroundColor: Colors.grey,
+        backgroundColor: const Color(0xff795548),
         enableDrag: false,
         builder: (context) => Padding(
           padding: const EdgeInsets.only(top: 5.0),
           child: Container(
             alignment: FractionalOffset.bottomCenter,
             height: 70,
-            color: Colors.grey,
+            color: const Color(0xff795548),
             child: Row(children: [
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
@@ -120,7 +120,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                       });
                     },
                     maxLines: 1,
-                    style: const TextStyle(color: Colors.amber),
+                    style: const TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),
                     decoration: const InputDecoration(
                         hintText: 'Enter a quick task here',
                         hintStyle: TextStyle(color: Colors.white)),
