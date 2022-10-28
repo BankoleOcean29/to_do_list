@@ -59,6 +59,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                             tasks.removeAt(index);
                           });
                         },
+                        background: Container(color: Colors.red),
                         child: Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Container(
