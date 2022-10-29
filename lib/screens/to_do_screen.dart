@@ -105,14 +105,14 @@ class _ToDoScreenState extends State<ToDoScreen> {
         ]),
       ),
       bottomSheet: BottomSheet(
-        backgroundColor: const Color(0xff795548),
+        backgroundColor: const Color(0xffBCAAA4),
         enableDrag: false,
         builder: (context) => Padding(
           padding: const EdgeInsets.only(top: 5.0),
           child: Container(
             alignment: FractionalOffset.bottomCenter,
             height: 70,
-            color: const Color(0xff795548),
+            color: const Color(0xffBCAAA4),
             child: Row(children: [
               Padding(
                 padding: const EdgeInsets.only(left: 8.0),
